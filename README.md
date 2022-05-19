@@ -117,6 +117,8 @@ Y ESTA ES LA SOLUCION PARA NUESTRO PROBLEMA DE COPIAR UN OBJETO CON MAS OBJETOS 
 * La recursividad puede dar lugar a la redundancia (resolver el mismo problema más de una vez)
 * A veces es más sencillo encontrar una solución recursiva que una iterativa
 
-Es perfecto cuando buscamos copiar objetos en otros objetos que estos tengan metodos, atributos y objetos dentro. la recursividad es maravillosa. 
+Es perfecto cuando buscamos copiar objetos en otros objetos que estos tengan metodos, atributos y objetos dentro. la recursividad es maravillosa.
+
+checar deepCopy.js
 
 TE AMO RECURSIVIDAD
