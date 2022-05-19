@@ -1,6 +1,5 @@
 ![alt text](./cambiosProperty.png)
 
-
 ### Object.defineProperty
 
 Con esta propiedad se pueden definir nuevas propiedades a nuestro objeto. Así mismo, se puede configurar ciertas características de la propiedad tales como:
@@ -15,7 +14,6 @@ Si queremos modificar un propiedad que tienen `writable: false` no permitirá qu
 
 Si queremos eliminar propiedad que tienen `configurable: false` no permitirá que sea borrada del objeto.
 
-
 **Object.freeze()**
 
 Este método *congela* un objeto que sea pasado. Es decir:
@@ -23,7 +21,6 @@ Este método *congela* un objeto que sea pasado. Es decir:
 * Impide que se le agreguen nuevas propiedades
 * Impide que sean eliminas propiedades ya existentes
 * Impide que sus las propiedades internas (`writable`, `enumerable` y `configurable`) sean modificadas
-
 
 **Object.seal()**
 
@@ -46,10 +43,7 @@ Ahora ya entiendo que cuando igualamos una variable a otra estamos igualando al 
 
 El **Shallow Copy** *(copia superficial)* es una copia bit a bit de un objeto. Se crea un nuevo objeto que tiene una copia exacta de los valores del objeto original. Si alguno de los campos del objeto son referencias a otros objetos, solo se copian las direcciones de referencia, es decir, solo se copia la dirección de memoria.
 
-```git
 ![alt text](./ShallowCopy.jpg)
-```
-
 
 #### [Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
@@ -67,4 +61,33 @@ La principal diferencia entre **Object.create()** y **Object.assign()** es que e
 
 Por lo tanto, vemos que mientras **Object.create()** define propiedades en nuestro **Object** recién creado. **Object.assign()** simplemente asigna el valor de los objetos de origen de destino a nuestro Objeto de destino.
 
-#### Código Clase
+POR LO TANTO Y EN RESUMEN NO FUNCIONAN MUY BIEN DEL TODO CUANDO EN UN OBJETO TIENE OTROS OBJETOS DENTRO Y ESTO LO VAMOS A SOLUCIONAR CON  JSON.parse y JSON.stringify
+
+
+#### [JSON.stringify()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
+
+El método JSON.stringify() convierte un objeto o valor de JavaScript en una cadena JSON, reemplazando opcionalmente valores si se especifica una función de reemplazo u opcionalmente incluyendo solo las propiedades especificadas si se especifica una matriz de reemplazo.
+
+* [**Descripción**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#descripci%C3%B3n)
+  * Los objetos  **Boolean** ,  **Number** , and **String** se convierten a sus valores primitivos, de acuerdo con la conversión semántica tradicional.
+  * Si durante la conversión se encuentra un  **undefined** , una  **Function** , o un **Symbol** se omite (cuando se encuentra en un objeto) o se censura a **null** (cuando se encuentra en un array). **JSON.stringify()** puede devolver **undefined** cuando se pasan valores “puros” como  **JSON.stringify(function(){}** ) o  **JSON.stringify(undefined)** .
+  * Todas las propiedades que utilicen **Symbol** en los nombres de la clave se ignoran por completo, incluso si utilizan una función  **replacer** .
+  * Las instancias de **Date** implementan la función **toJSON()** devolviendo una cadena de texto (igual que  **date.toISOString()** ). Por lo que son tratadas como strings.
+  * Los números **Infinity** y  **NaN** , así como el valor  **null** , se consideran  **null** .
+  * El resto de instancias de **Object** (incluyendo  **Map** ,  **Set** ,  **WeakMap** , y  **WeakSet** ) sólo tendrán serializadas sus propiedades enumerables.
+
+JSON.stringify () convierte un valor en notación JSON que lo representa:
+
+#### [JSON.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
+
+El método JSON.parse() analiza una cadena de texto (string) como JSON, transformando opcionalmente el valor producido por el análisis.
+
+#### [Why JSON.parse(JSON.stringify()) is a bad practice to clone an object in JavaScript](https://medium.com/@pmzubar/why-json-parse-json-stringify-is-a-bad-practice-to-clone-an-object-in-javascript-b28ac5e36521)
+
+* Puedes perder tipos de datos.
+* JavaScript no te avisara cuando pierdas algún tipo de dato al usar JSON.stringify(), asi que GG mi rey
+* Convierte tipos de datos no soportados en soportados, como **`infinity`** y **`NaN`** en **`null`**
+* Los tipos de datos **`Date`** serán parseados como **`strings`,** no como **`Date`**
+* No es tan rápido y eficiente.
+
+Y ESTA ES LA SOLUCION PARA NUESTRO PROBLEMA DE COPIAR UN OBJETO CON MAS OBJETOS DENTRO. SIN EMBARGO ESTO NO SIRVE CUANDO TENEMOS FUNCIONES O METODOS EN NUESTRO OBJETO. Por ello necesitamos trabajar con recursividad
