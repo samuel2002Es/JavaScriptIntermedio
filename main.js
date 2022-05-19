@@ -42,4 +42,13 @@ Object .defineProperty(juan, "terminal",{
     configurable: false,
 });
 
+/* Object.seal(); */
+/* no se puede borrar  pero si modificar */
+
+Object.freeze();
+/* no se puede borrar ni tampoco modificar */
+
+/* estas propiedades se hacen automaticamente a todos nuestros atributos */
 console.log(Object.getOwnPropertyDescriptors(juan));
+
+/*  */
