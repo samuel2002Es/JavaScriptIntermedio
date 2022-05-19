@@ -90,4 +90,33 @@ El método JSON.parse() analiza una cadena de texto (string) como JSON, transfor
 * Los tipos de datos **`Date`** serán parseados como **`strings`,** no como **`Date`**
 * No es tan rápido y eficiente.
 
-Y ESTA ES LA SOLUCION PARA NUESTRO PROBLEMA DE COPIAR UN OBJETO CON MAS OBJETOS DENTRO. SIN EMBARGO ESTO NO SIRVE CUANDO TENEMOS FUNCIONES O METODOS EN NUESTRO OBJETO. Por ello necesitamos trabajar con recursividad
+Y ESTA ES LA SOLUCION PARA NUESTRO PROBLEMA DE COPIAR UN OBJETO CON MAS OBJETOS DENTRO. SIN EMBARGO ESTO NO SIRVE CUANDO TENEMOS FUNCIONES O METODOS EN NUESTRO OBJETO. Por ello necesitamos trabajar con recursividad 
+
+### ¿Por qué escribir programas recursivos?
+
+* Son mas cercanos a la descripción matemática.
+* Generalmente mas fáciles de analizar
+* Se adaptan mejor a las estructuras de datos recursivas.
+* Los algoritmos recursivos ofrecen soluciones estructuradas, modulares y elegantemente simples.
+
+### Factible de utilizar recursividad
+
+* Para simplificar el código.
+* Cuando la estructura de datos es recursiva
+  ejemplo : árboles.
+
+### No factible utilizar recursividad
+
+* Cuando los métodos usen arreglos largos.
+* Cuando el método cambia de manera impredecible de campos.
+* Cuando las iteraciones sean la mejor opción.
+
+#### Conclusiones
+
+* La recursividad consume mucha memoria y tiempo de ejecución.
+* La recursividad puede dar lugar a la redundancia (resolver el mismo problema más de una vez)
+* A veces es más sencillo encontrar una solución recursiva que una iterativa
+
+Es perfecto cuando buscamos copiar objetos en otros objetos que estos tengan metodos, atributos y objetos dentro. la recursividad es maravillosa. 
+
+TE AMO RECURSIVIDAD
