@@ -1,4 +1,4 @@
-![alt text](./cambiosProperty.png)
+
 
 ### Object.defineProperty
 
@@ -63,7 +63,6 @@ Por lo tanto, vemos que mientras **Object.create()** define propiedades en nuest
 
 POR LO TANTO Y EN RESUMEN NO FUNCIONAN MUY BIEN DEL TODO CUANDO EN UN OBJETO TIENE OTROS OBJETOS DENTRO Y ESTO LO VAMOS A SOLUCIONAR CON  JSON.parse y JSON.stringify
 
-
 #### [JSON.stringify()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
 
 El método JSON.stringify() convierte un objeto o valor de JavaScript en una cadena JSON, reemplazando opcionalmente valores si se especifica una función de reemplazo u opcionalmente incluyendo solo las propiedades especificadas si se especifica una matriz de reemplazo.
@@ -90,7 +89,7 @@ El método JSON.parse() analiza una cadena de texto (string) como JSON, transfor
 * Los tipos de datos **`Date`** serán parseados como **`strings`,** no como **`Date`**
 * No es tan rápido y eficiente.
 
-Y ESTA ES LA SOLUCION PARA NUESTRO PROBLEMA DE COPIAR UN OBJETO CON MAS OBJETOS DENTRO. SIN EMBARGO ESTO NO SIRVE CUANDO TENEMOS FUNCIONES O METODOS EN NUESTRO OBJETO. Por ello necesitamos trabajar con recursividad 
+Y ESTA ES LA SOLUCION PARA NUESTRO PROBLEMA DE COPIAR UN OBJETO CON MAS OBJETOS DENTRO. SIN EMBARGO ESTO NO SIRVE CUANDO TENEMOS FUNCIONES O METODOS EN NUESTRO OBJETO. Por ello necesitamos trabajar con recursividad
 
 ### ¿Por qué escribir programas recursivos?
 
@@ -122,3 +121,19 @@ Es perfecto cuando buscamos copiar objetos en otros objetos que estos tengan met
 checar deepCopy.js
 
 TE AMO RECURSIVIDAD
+
+### Abstracción con objetos literales y deep copy
+
+#### [Object.isSealed()](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object/isSealed)
+
+El método `**Object.isSealed()**` si el objeto está sellado.
+
+Devuelve true si el objeto está sellado, de lo contrario devuelve false. Un objeto está sellado si no es extensible y si todas sus propiedades no se pueden configurar y por lo tanto no removibles (pero no necesariamente no modificables).
+
+#### [Object.isFrozen()](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen)
+
+El método `**Object.isFrozen()**` determina si un objeto está congelado.
+
+Devuelve true si el objeto está sellado, de lo contrario devuelve false. Un objeto está sellado si no es extensible y si todas sus propiedades no se pueden configurar y por lo tanto no removibles (pero no necesariamente no modificables).
+
+Un objeto está congelado si y solo si no es extendible, todas sus propiedades son no-configurables, y todos los datos de sus propiedades no tienen capacidad de escritura.
